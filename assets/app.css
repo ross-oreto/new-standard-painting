@@ -4,11 +4,11 @@ html {
 body {
     height: 100vh;
 }
-body .body {
+.container .content {
     position: relative;
     height: 100vh;
 }
-body .body section {
+.container .content section {
     padding-bottom: 2.5rem;
 }
 footer {

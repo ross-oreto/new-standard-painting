@@ -19,8 +19,4 @@ class App {
     function about($f3) {
         echo $this->render("about", $f3);
     }
-
-    function contact($f3) {
-        echo $this->render("contact", $f3);
-    }
 }
