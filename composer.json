@@ -1,0 +1,18 @@
+{
+    "name": "alex/nsp",
+    "description": "nsp-web",
+    "type": "project",
+    "require": {
+        "bcosca/fatfree-core": "3.7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alex\\Nsp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ross-oreto"
+        }
+    ]
+}

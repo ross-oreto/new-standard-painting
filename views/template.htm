@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Standard Painting</title>
+    <link rel="icon" href="{{@BASE}}/assets/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/app.css">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="body bg-logo-mobile bg-logo-touch bg-logo-tablet bg-logo-desktop bg-logo-widescreen bg-logo-fullhd">
+    <include href="views/header.htm" />
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <include href="{{ @content }}" />
+            </div>
+        </div>
+    </section>
+    <include href="views/footer.htm" />
+</div>
+<script type="module" src="{{@BASE}}/assets/app.js"></script>
+</body>
+</html>
