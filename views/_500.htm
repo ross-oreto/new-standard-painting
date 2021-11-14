@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404</title>
+    <link rel="icon" href="{{@BASE}}/assets/favicon.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/app.css">
+</head>
+<body>
+<div class="body">
+    <section class="hero is-medium is-danger is-fullheight">
+        <div class="hero-head">
+            <include href="views/header.htm" />
+        </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">
+                    {{ @error_code }}: {{ @error_message }}
+                </p>
+                <p class="subtitle">
+                    {{ @error_trace }}
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
