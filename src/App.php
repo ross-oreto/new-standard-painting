@@ -19,4 +19,8 @@ class App {
     function about($f3) {
         echo $this->render("about", $f3);
     }
+
+    function pricing($f3) {
+        echo $this->render("pricing", $f3);
+    }
 }
