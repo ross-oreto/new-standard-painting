@@ -4,3 +4,5 @@ composer.phar
 /tmp/
 .idea
 *.iml
+
+config/secrets.*
