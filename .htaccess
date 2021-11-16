@@ -2,7 +2,7 @@ RewriteEngine On
 
 # RewriteRule ^(app|dict|ns|tmp)\/|\.ini$ - [R=404]
 # only allow index and assets access
-RewriteRule !^(index\.php$|assets/) - [R=404]
+RewriteRule !^((index\.php)?$|assets/) - [R=404]
 
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-f
