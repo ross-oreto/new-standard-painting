@@ -1,8 +1,7 @@
 RewriteEngine On
 
-# RewriteRule ^(app|dict|ns|tmp)\/|\.ini$ - [R=404]
-# only allow index and assets access
-RewriteRule !^((index\.php)?$|assets/) - [R=404]
+# only allow index.php as entry point or serve assets.
+RewriteRule !^((index\.php)?$|assets/) /index.php [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-f
