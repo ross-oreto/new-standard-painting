@@ -6,3 +6,8 @@ composer.phar
 *.iml
 
 config/secrets.*
+
+node_modules/
+node/
+assets/dist
+logs

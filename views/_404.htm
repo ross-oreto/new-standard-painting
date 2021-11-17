@@ -4,15 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>404</title>
-    <link rel="icon" href="{{@BASE}}/assets/favicon.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/app.css">
+    <link rel="icon" href="{{ @asset('favicon.png') }}" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{{ @asset('app.css') }}">
 </head>
 <body>
 <div class="body">
     <section class="hero is-medium is-link is-fullheight">
         <div class="hero-head">
-            <include href="views/header.htm" />
+            <include href="header.htm" />
         </div>
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -22,7 +21,7 @@
                 <p class="subtitle">
                    It's pickled.
                 </p>
-                <img src="{{@BASE}}/assets/paint-roller-solid.svg" height="250" width="250" />
+                <img src="{{ @asset('paint-roller-solid.svg') }}" height="250" width="250" />
             </div>
         </div>
     </section>

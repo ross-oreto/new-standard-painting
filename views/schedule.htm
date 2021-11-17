@@ -1,3 +1,74 @@
 <div class="box">
-    Schedule
+   <form>
+      <div class="field">
+         <label class="label">Name</label>
+         <div class="control">
+            <input class="input" type="text" placeholder="Your name">
+         </div>
+      </div>
+
+      <div class="field">
+         <label class="label">Address</label>
+         <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Your address">
+            <span class="icon is-small is-left">
+               <img src="{{ @asset('location-dot-solid.svg') }}" height="15" width="15" />
+            </span>
+         </div>
+         <p class="help is-danger"></p>
+      </div>
+
+      <div class="field">
+         <label class="label">Email</label>
+         <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Your email">
+            <span class="icon is-small is-left">
+               <img src="{{ @asset('envelope-regular.svg') }}" height="20" width="20" />
+            </span>
+         </div>
+         <p class="help is-danger"></p>
+      </div>
+
+      <div class="field">
+         <label class="label">Phone (Optional)</label>
+         <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="555-555-5555">
+            <span class="icon is-small is-left">
+               <img src="{{ @asset('phone-solid.svg') }}" height="20" width="20" />
+            </span>
+         </div>
+         <p class="help is-danger"></p>
+      </div>
+
+      <div class="field">
+         <label class="label">Property</label>
+         <div class="control">
+            <div class="select">
+               <select>
+                  <option>Select property type</option>
+                  <option>House</option>
+                  <option>Condo</option>
+                  <option>Building/Apartment Building</option>
+                  <option>Other</option>
+               </select>
+            </div>
+         </div>
+      </div>
+
+      <div class="field">
+         <label class="label">Comments</label>
+         <div class="control">
+            <textarea class="textarea" placeholder="Comments/Questions/Concerns"></textarea>
+         </div>
+      </div>
+
+      <div class="field is-grouped">
+         <div class="control">
+            <button type="button" class="button is-link">Request Free Estimate</button>
+         </div>
+         <div class="control">
+            <a class="button is-link is-light" href="/">Cancel</a>
+         </div>
+      </div>
+   </form>
 </div>

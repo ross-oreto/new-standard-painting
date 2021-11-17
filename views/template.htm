@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>New Standard Painting</title>
-    <link rel="icon" href="{{@BASE}}/assets/favicon.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="{{@BASE}}/assets/app.css">
+    <link rel="icon" href="{{ @asset('favicon.png') }}" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{{ @asset('app.css') }}">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,7 +13,7 @@
 </head>
 <body>
 <div class="body">
-    <include href="views/header.htm" />
+    <include href="header.htm" />
     <div class="container is-fluid p-0">
 <!--        <div class="content"></div>-->
         <div>
@@ -23,8 +22,8 @@
         <div class="content bg-logo-mobile bg-logo-touch bg-logo-tablet bg-logo-desktop bg-logo-widescreen bg-logo-fullhd">
         </div>
     </div>
-    <include href="views/footer.htm" />
+    <include href="footer.htm" />
 </div>
-<script type="module" src="{{@BASE}}/assets/app.js"></script>
+<script type="module" src="{{ @asset('app.js') }}"></script>
 </body>
 </html>

@@ -2,25 +2,17 @@
 
 namespace Alex\Nsp;
 
-class App {
-    function render(string $view, $f3): string {
-        $f3->set('content',"views/$view.htm");
-        return \Template::instance()->render("views/template.htm");
-    }
+use Alex\Nsp\Routing\Routes;
 
-    function index($f3) {
-        echo $this->render("home", $f3);
+class App extends Willow {
+    static function routes(): Routes {
+        return Routes::create(self::class)
+            ->GET("home", "/")->handler('index')
+            ->GET("schedule", "/schedule")->handler('schedule')
+            ->build();
     }
 
     function schedule($f3) {
         echo $this->render("schedule", $f3);
-    }
-
-    function about($f3) {
-        echo $this->render("about", $f3);
-    }
-
-    function pricing($f3) {
-        echo $this->render("pricing", $f3);
     }
 }

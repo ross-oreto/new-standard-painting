@@ -1,7 +1,7 @@
 <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <img src="{{@BASE}}/assets/nsp-ico-sm.png">
+            <img src="{{ @asset('nsp-ico-sm.png') }}">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
@@ -16,16 +16,14 @@
             <a class="navbar-item" href="/schedule">
                 Schedule
             </a>
-            <a class="navbar-item" href="/about">
-                About
-            </a>
-            <a class="navbar-item" href="/pricing">
-                Pricing
-            </a>
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
+                <a href="tel:555-555-5555" class="button is-dark">
+                    555-555-5555
+                </a>
+                <img src="{{ @asset('phone-solid.svg') }}" height="25" width="25" />
             </div>
         </div>
     </div>

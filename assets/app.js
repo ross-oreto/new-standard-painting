@@ -1,4 +1,4 @@
-import { $ } from "./jquery.min.js"
+import {$} from "./jquery.js"
 
 $(function () {
     $(".navbar-burger").on('click',function() {

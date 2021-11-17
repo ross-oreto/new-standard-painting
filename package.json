@@ -1,0 +1,22 @@
+{
+  "name": "mundle",
+  "description": "minify and bundle stuff",
+  "private": true,
+  "author": "Ross Oreto",
+  "version": "0.0.1",
+  "repository": "",
+  "scripts": {
+    "start": "webpack watch --config webpack.dev.js",
+    "build-dev": "webpack build --config webpack.dev.js",
+    "build": "webpack build --config webpack.prod.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.4",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
