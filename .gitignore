@@ -1,13 +1,14 @@
-composer.phar
-/vendor/
-
-/tmp/
 .idea
 *.iml
+composer.phar
+
+/vendor/
+
+webapp/tmp/
+webapp/assets/dist
 
 config/secrets.*
 
 node_modules/
 node/
-assets/dist
 logs

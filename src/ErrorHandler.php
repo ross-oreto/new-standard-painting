@@ -5,8 +5,11 @@ namespace Alex\Nsp;
 use Base;
 
 class ErrorHandler {
+    static string $ERROR_PREFIX  = 'ERROR';
+
+
     static function handle($f3) {
-        echo match ($f3->get('ERROR.code')) {
+        echo match ($f3->get(self::$ERROR_PREFIX.".code")) {
             404 => self::handle404($f3),
             default => self::handle500($f3),
         };
@@ -14,13 +17,13 @@ class ErrorHandler {
 
     static function handle404(Base $f3): string {
         $ext = $f3->get('ext');
-        self::logError($f3->get('ERROR'), false);
+        self::logError($f3->get(self::$ERROR_PREFIX), false);
         return \Template::instance()->render("_404$ext");
     }
 
     static function handle500(Base $f3): string {
         $ext = $f3->get('ext');
-        self::logError($f3->get('ERROR'));
+        self::logError($f3->get(self::$ERROR_PREFIX));
         return \Template::instance()->render("_500$ext");
     }
 

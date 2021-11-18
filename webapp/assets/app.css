@@ -21,55 +21,55 @@ footer {
 
 @media screen and (max-width: 768px) {
     .bg-logo-mobile {
-        background: url('/assets/nsp-logo-sm.png') no-repeat center 0;
+        background: url('nsp-logo-sm.png') no-repeat center 0;
         background-size: cover;
     }
 }
 @media screen and (min-width: 769px), print {
     .bg-logo-tablet {
-        background: url('/assets/nsp-logo-sm.png') no-repeat center 0;
+        background: url('nsp-logo-sm.png') no-repeat center 0;
         background-size: cover;
     }
 }
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .bg-logo-tablet-only {
-        background: url('/assets/nsp-logo-sm.png') no-repeat center 0;
+        background: url('nsp-logo-sm.png') no-repeat center 0;
         background-size: cover;
     }
 }
 @media screen and (max-width: 1023px) {
     .bg-logo-touch {
-        background: url('/assets/nsp-logo-md.png') no-repeat center 0;
+        background: url('nsp-logo-md.png') no-repeat center 0;
         background-size: cover;
     }
 }
 @media screen and (min-width: 1024px) {
     .bg-logo-desktop {
-        background: url('/assets/nsp-logo-md.png') no-repeat center 0;
+        background: url('nsp-logo-md.png') no-repeat center 0;
         background-size: 100% 1000px;
     }
 }
 @media screen and (min-width: 1024px) and (max-width: 1215px) {
     .bg-logo-desktop-only {
-        background: url('/assets/nsp-logo-md.png') no-repeat center 0;
+        background: url('nsp-logo-md.png') no-repeat center 0;
         background-size: 100% 1000px;
     }
 }
 @media screen and (min-width: 1216px) {
     .bg-logo-widescreen {
-        background: url('/assets/nsp-logo-md.png') no-repeat center 0;
+        background: url('nsp-logo-md.png') no-repeat center 0;
         background-size: 100% 1000px;
     }
 }
 @media screen and (min-width: 1216px) and (max-width: 1407px) {
     .bg-logo-widescreen-only {
-        background: url('/assets/nsp-logo-md.png') no-repeat center 0;
+        background: url('nsp-logo-md.png') no-repeat center 0;
         background-size: 100% 1000px;
     }
 }
 @media screen and (min-width: 1408px) {
     .bg-logo-fullhd {
-        background: url('/assets/nsp-logo-lg.png') no-repeat center 0;
+        background: url('nsp-logo-lg.png') no-repeat center 0;
         background-size:100% 1000px;
     }
 }

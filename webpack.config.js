@@ -6,7 +6,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin(),
     ],
-    entry: {app: ['./assets/app.js', './assets/app.css']},
+    entry: {app: ['./webapp/assets/app.js', './webapp/assets/app.css']},
     module: {
         rules: [{
                 test: /\.css$/i,
@@ -26,6 +26,6 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, './assets/dist'),
+        path: path.resolve(__dirname, './webapp/assets/dist'),
     },
 };
