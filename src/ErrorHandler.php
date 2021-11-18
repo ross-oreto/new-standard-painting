@@ -13,13 +13,15 @@ class ErrorHandler {
     }
 
     static function handle404(Base $f3): string {
+        $ext = $f3->get('ext');
         self::logError($f3->get('ERROR'), false);
-        return \Template::instance()->render('_404.htm');
+        return \Template::instance()->render("_404$ext");
     }
 
     static function handle500(Base $f3): string {
+        $ext = $f3->get('ext');
         self::logError($f3->get('ERROR'));
-        return \Template::instance()->render('_500.htm');
+        return \Template::instance()->render("_500$ext");
     }
 
     /**

@@ -3,25 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>404</title>
+    <title>{{ @ERROR.code }}</title>
     <link rel="icon" href="{{ @asset('favicon.png') }}" type="image/png">
     <link rel="stylesheet" type="text/css" href="{{ @asset('app.css') }}">
 </head>
 <body>
 <div class="body">
-    <section class="hero is-medium is-link is-fullheight">
+    <section class="hero is-medium is-danger is-fullheight">
         <div class="hero-head">
-            <include href="header.htm" />
+            {{ @mode }} - debug: {{ @ERROR.level }}
         </div>
         <div class="hero-body">
             <div class="container has-text-centered">
                 <p class="title">
-                   Oh boy.....
+                    {{ @ERROR.code }}: {{ @ERROR.text }}
                 </p>
                 <p class="subtitle">
-                   It's pickled.
+                    {{ @ERROR.trace }}
                 </p>
-                <img src="{{ @asset('paint-roller-solid.svg') }}" height="250" width="250" />
             </div>
         </div>
     </section>

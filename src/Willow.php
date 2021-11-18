@@ -59,6 +59,17 @@ abstract class Willow {
     }
 
     /**
+     * Lookup the i18n key in the dictionary
+     * @param Base $f3
+     * @param string $key The dictionary key
+     * @param string|array|null $args Arguments passed for substitution in the message
+     * @return string The resolved message
+     */
+    protected static function dict(Base $f3, string $key, string|array $args = NULL): string {
+        return $f3->get($f3->get("PREFIX").$key, $args);
+    }
+
+    /**
      * Configure framework by reading config files from /config/
      * @param Base $f3
      * @param string $name Name of the config file
@@ -177,11 +188,15 @@ abstract class Willow {
      * @return string The rendered template
      */
     protected function render(string $view, Base $f3, bool $template = true): string {
+        $viewKey = str_replace('/', '.', $view);
+        $f3->set('view', $viewKey);
+        $f3->set('title', self::dict($f3, $viewKey.'.title'));
+        $ext = $f3->get('ext');
         if ($template) {
-            $f3->set('content',"$view.htm");
-            return \Template::instance()->render("/template.htm");
+            $f3->set('content',"$view$ext");
+            return \Template::instance()->render("/template$ext");
         } else {
-            return \Template::instance()->render("/$view.htm");
+            return \Template::instance()->render("/$view$ext");
         }
     }
 

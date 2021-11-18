@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>New Standard Painting</title>
+    <title>{{ @title }}</title>
     <link rel="icon" href="{{ @asset('favicon.png') }}" type="image/png">
     <link rel="stylesheet" type="text/css" href="{{ @asset('app.css') }}">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="body">
-    <include href="header.htm" />
+    <include href="{{ 'header'.@ext }}"/>
     <div class="container is-fluid p-0">
 <!--        <div class="content"></div>-->
         <div>
@@ -22,7 +22,7 @@
         <div class="content bg-logo-mobile bg-logo-touch bg-logo-tablet bg-logo-desktop bg-logo-widescreen bg-logo-fullhd">
         </div>
     </div>
-    <include href="footer.htm" />
+    <include href="{{ 'footer'.@ext }}" />
 </div>
 <script type="module" src="{{ @asset('app.js') }}"></script>
 </body>

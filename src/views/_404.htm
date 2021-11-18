@@ -9,18 +9,19 @@
 </head>
 <body>
 <div class="body">
-    <section class="hero is-medium is-danger is-fullheight">
+    <section class="hero is-medium is-link is-fullheight">
         <div class="hero-head">
-            <include href="header.htm" />
+            <include href="{{ 'header'.@ext }}" />
         </div>
         <div class="hero-body">
             <div class="container has-text-centered">
                 <p class="title">
-                    {{ @error_code }}: {{ @error_message }}
+                   Oh boy.....
                 </p>
                 <p class="subtitle">
-                    {{ @error_trace }}
+                   It's pickled.
                 </p>
+                <img src="{{ @asset('paint-roller-solid.svg') }}" height="250" width="250" />
             </div>
         </div>
     </section>
