@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa56776e0b555ccb61395145af9d9170",
+    "content-hash": "067cba89471eea483014ed237b1fbb3b",
     "packages": [
         {
             "name": "bcosca/fatfree-core",
@@ -141,6 +141,16 @@
             "time": "2021-10-01T21:08:31+00:00"
         },
         {
+            "name": "oreto/f3-willow",
+            "version": "master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ross-oreto/f3-willow.git",
+                "reference": "master"
+            },
+            "type": "library"
+        },
+        {
             "name": "psr/log",
             "version": "3.0.0",
             "source": {
@@ -194,7 +204,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "oreto/f3-willow": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

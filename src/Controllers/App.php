@@ -1,8 +1,9 @@
 <?php
 
-namespace Alex\Nsp;
+namespace Alex\Nsp\Controllers;
 
-use Alex\Nsp\Routing\Routes;
+use Oreto\F3Willow\Routing\Routes;
+use Oreto\F3Willow\Willow;
 
 class App extends Willow {
     static function routes(): Routes {
@@ -13,6 +14,6 @@ class App extends Willow {
     }
 
     function schedule($f3) {
-        echo $this->render("schedule", $f3);
+        echo $this->render("schedule");
     }
 }

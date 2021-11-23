@@ -1,8 +1,8 @@
 <?php
 
-use Alex\Nsp\App;
-use Alex\Nsp\Willow;
+use Alex\Nsp\Controllers\App;
+use Oreto\F3Willow\Willow;
 
 require '../vendor/autoload.php';
 $f3 = \Base::instance();
-Willow::run($f3, [App::routes()]);
+Willow::equip($f3, [App::routes()])->run();
