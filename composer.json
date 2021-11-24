@@ -6,7 +6,8 @@
         "php": ">=8.0",
         "bcosca/fatfree-core": "3.7.3",
         "monolog/monolog": "^2.3",
-        "oreto/f3-willow": "dev-master"
+        "oreto/f3-willow": "dev-master",
+      "ext-curl": "*"
     },
     "autoload": {
         "psr-4": {
