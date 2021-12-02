@@ -1,5 +1,4 @@
 import {$} from "./jquery.js";
-import "./jquery.validate.js";
 
 $(function () {
     $(".navbar-burger").on('click',function() {
