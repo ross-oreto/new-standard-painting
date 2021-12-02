@@ -119,8 +119,7 @@ $(function () {
                 }
             }).fail((data) => {
                 suggestedAddress.val('');
-                options.messages = { 'address': { equalTo: `${data.responseText}` }}
-                validateForm(options);
+                validator.showErrors({ 'address': data.responseText });
             });
         }
     });
