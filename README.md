@@ -1,5 +1,5 @@
 # new-standard-painting
-Welcome to New Standard Painting
+Welcome to NewStandard Painting
 
 ### Run locally
 ```bash

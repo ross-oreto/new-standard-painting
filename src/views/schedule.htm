@@ -8,16 +8,16 @@
    <check if="{{ @success === false }}">
    <form id="schedule">
       <div class="field">
-         <label class="label">Name</label>
+         <label class="label">{{ @DICT.schedule.name.label }}</label>
          <div class="control">
-            <input class="input" type="text" name="name" placeholder="Your name">
+            <input class="input" type="text" name="name" placeholder="{{ @DICT.schedule.name.placeholder }}">
          </div>
       </div>
 
       <div class="field">
-         <label class="label">Address</label>
+         <label class="label">{{ @DICT.schedule.address.label }}</label>
          <div class="control has-icons-left has-icons-right">
-            <input class="input" placeholder="Your address" name="address">
+            <input class="input" placeholder="{{ @DICT.schedule.address.placeholder }}" name="address">
             <span class="icon is-small is-left">
                <img src="{{ @asset('location-dot-solid.svg') }}" height="15" width="15" />
             </span>
@@ -28,9 +28,9 @@
       <input type="hidden" name="suggestedAddress">
 
       <div class="field">
-         <label class="label">Email</label>
+         <label class="label">{{ @DICT.schedule.email.label }}</label>
          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="email" name="email" placeholder="Your email">
+            <input class="input" type="email" name="email" placeholder="{{ @DICT.schedule.email.placeholder }}">
             <span class="icon is-small is-left">
                <img src="{{ @asset('envelope-regular.svg') }}" height="20" width="20" />
             </span>
@@ -39,7 +39,7 @@
       </div>
       <div class="field">
          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="email" name="confirm-email" placeholder="Confirm email">
+            <input class="input" type="email" name="confirm-email" placeholder="{{ @DICT.schedule.email.confirm.placeholder }}">
             <span class="icon is-small is-left">
                <img src="{{ @asset('envelope-regular.svg') }}" height="20" width="20" />
             </span>
@@ -48,10 +48,10 @@
       </div>
 
       <div class="field">
-         <label class="label">Phone</label>
+         <label class="label">{{ @DICT.schedule.phone.label }}</label>
          <div class="control has-icons-left has-icons-right">
             <input class="input" type="tel" name="phone"
-                   placeholder="555-555-5555" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
+                   placeholder="{{ @DICT.schedule.phone.placeholder }}" pattern="[0-9]{3}-?[0-9]{3}-?[0-9]{4}">
             <span class="icon is-small is-left">
                <img src="{{ @asset('phone-solid.svg') }}" height="20" width="20" />
             </span>
@@ -63,28 +63,28 @@
          <div class="control">
             <label class="checkbox">
                <input type="checkbox" name="contact">
-               I prefer to be contacted by phone
+               {{ @DICT.schedule.phone.prefer }}
             </label>
          </div>
       </div>
 
       <div class="field">
-         <label class="label">Comments</label>
+         <label class="label">{{ @DICT.schedule.comments.label }}</label>
          <div class="control">
-            <textarea class="textarea" name="comments" placeholder="Comments/Questions/Concerns"></textarea>
+            <textarea class="textarea" name="comments" placeholder="{{ @DICT.schedule.comments.placeholder }}"></textarea>
          </div>
       </div>
 
       <div class="field">
          <img id="captcha" src="/captcha" title="captcha image" alt="captcha"/>
          <div class="control">
-            <input class="input" type="text" name="captcha" placeholder="Enter the text above"/>
+            <input class="input" type="text" name="captcha" placeholder="{{ @DICT.schedule.captcha.placeholder }}"/>
          </div>
       </div>
 
       <div class="field is-grouped pt-5">
          <div class="control">
-            <button id="estimate-button" type="button" class="button is-link">Request Free Estimate</button>
+            <button id="estimate-button" type="button" class="button is-link">{{ @DICT.schedule.estimate.button }}</button>
          </div>
       </div>
    </form>

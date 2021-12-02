@@ -27,6 +27,14 @@ class App extends Willow {
             ->build();
     }
 
+    function beforeRoute(Base $f3) {
+        $lang = Willow::get("GET.lang", Willow::get("SESSION.lang"));
+        if ($lang) {
+           $f3->set('SESSION.lang', $lang);
+           $f3->set('LANGUAGE', $lang);
+        }
+    }
+
     public function index(Base $f3) {
         $success = $f3->get("SESSION.schedule.success") != null;
         $f3->set("success", $success);
