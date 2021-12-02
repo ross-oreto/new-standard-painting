@@ -12,3 +12,5 @@ config/secrets.*
 node_modules/
 node/
 logs
+
+*.private.*

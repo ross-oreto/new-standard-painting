@@ -1,0 +1,9 @@
+# curl -X GET --location "https://geocode.search.hereapi.com/v1/geocode?q=Hotbox Fitness 1006 Nashville TN&limit=3&apiKey= \
+#    -H "Accept: application/json"
+GET https://geocode.search.hereapi.com/v1/geocode
+     ?q=Hotbox+Fitness+1006+Nashville+TN
+     &limit=3
+     &apiKey={{apikey}}
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+# curl -X GET
+#    'https://router.hereapi.com/v8/routes?origin=52.530705,13.383540;course=270;minCourseDistance=50&transportMode=car&destination=52.531839,13.390363&return=polyline,summary'
+GET https://router.hereapi.com/v8/routes
+     ?origin=36.17369,-86.76352
+     &transportMode=car
+     &destination=36.16423,-86.78981
+     &return=summary
+     &apiKey={{apikey}}
+
+###
+

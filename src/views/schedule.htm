@@ -1,4 +1,11 @@
-<div class="box">
+<div id="schedule-box" class="box">
+   <div id="loadingDiv" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+         <img src="{{ @asset('paint.gif') }}">
+      </div>
+   </div>
+   <check if="{{ @success === false }}">
    <form id="schedule">
       <div class="field">
          <label class="label">Name</label>
@@ -30,6 +37,15 @@
          </div>
          <p class="help is-danger"></p>
       </div>
+      <div class="field">
+         <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" name="confirm-email" placeholder="Confirm email">
+            <span class="icon is-small is-left">
+               <img src="{{ @asset('envelope-regular.svg') }}" height="20" width="20" />
+            </span>
+         </div>
+         <p class="help is-danger"></p>
+      </div>
 
       <div class="field">
          <label class="label">Phone</label>
@@ -46,7 +62,7 @@
       <div class="field">
          <div class="control">
             <label class="checkbox">
-               <input type="checkbox" name="phone">
+               <input type="checkbox" name="contact">
                I prefer to be contacted by phone
             </label>
          </div>
@@ -55,14 +71,41 @@
       <div class="field">
          <label class="label">Comments</label>
          <div class="control">
-            <textarea class="textarea" placeholder="Comments/Questions/Concerns"></textarea>
+            <textarea class="textarea" name="comments" placeholder="Comments/Questions/Concerns"></textarea>
          </div>
       </div>
 
-      <div class="field is-grouped">
+      <div class="field">
+         <img id="captcha" src="/captcha" title="captcha image" alt="captcha"/>
+         <div class="control">
+            <input class="input" type="text" name="captcha" placeholder="Enter the text above"/>
+         </div>
+      </div>
+
+      <div class="field is-grouped pt-5">
          <div class="control">
             <button id="estimate-button" type="button" class="button is-link">Request Free Estimate</button>
          </div>
       </div>
    </form>
+   </check>
+   <check if="{{ @success }}">
+      <div class="notification is-success">
+         <p>
+            {{ @DICT.schedule.success.notification1,@SESSION.schedule.success.name | format }}
+         </p>
+         <p>
+            {{ @DICT.schedule.success.notification2,@SESSION.schedule.success.email | format }}
+         </p>
+         <p>
+            {{ @DICT.schedule.success.notification3 }}
+         </p>
+         <p>
+            {{ @DICT.schedule.success.new.description }}
+         </p>
+         <div class="pt-3">
+            <a class="button is-link" href="/new">{{ @DICT.schedule.success.new.button }}</a>
+         </div>
+      </div>
+   </check>
 </div>

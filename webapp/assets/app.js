@@ -8,6 +8,15 @@ $(function () {
         $(".navbar-menu").toggleClass("is-active");
     });
 
+    $( "a.navbar-item.schedule" ).click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+            scrollTop: $($(this).attr("href")).offset().top - 40
+        }, 500);
+    });
+
+    let validator = null;
+
     $("#estimate-button").click(() => {
         const rules = {
             'name': {
@@ -21,20 +30,36 @@ $(function () {
                 required: true,
                 email: true
             }
+            , 'confirm-email': {
+                required: true,
+                email: true,
+                equalTo: 'input[name=email]'
+            }
             , 'phone': {
                 phoneUS: true,
                 required: {
-                    depends: () => $("input[name=phone]").is(":checked")
+                    depends: () => $("input[name=contact]").is(":checked")
+                }
+            }
+            , 'captcha': {
+                required: true
+                , remote: {
+                    url: '/validate-captcha'
+                    , error: (data) => {
+                        const el = $('#captcha');
+                        el.attr('src', el.attr('src') + '?' + Math.random());
+                        $('input[name="captcha"]').val('');
+                        validator.showErrors({
+                            'captcha': data.responseText
+                        });
+                    }
                 }
             }
         };
         const highlight = function(element, errorClass) {
             const el = $(element);
-            el.fadeOut(function() {
-                el.fadeIn();
-                el.addClass("is-danger");
-                el.siblings('label').addClass('has-text-danger');
-            });
+            el.addClass("is-danger");
+            el.siblings('label').addClass('has-text-danger');
         }
         const unhighlight = function(element, errorClass, validClass) {
             $(element).removeClass("is-danger");
@@ -46,7 +71,8 @@ $(function () {
             , highlight: highlight
             , unhighlight: unhighlight
             , messages: {
-                'address': { equalTo: 'Address not found' }
+                'address': { equalTo: '' }
+                , 'captcha': { remote: '' }
             }
         };
 
@@ -56,9 +82,8 @@ $(function () {
             requestEstimate();
         } else if(inputAddress.val()) {
             $.get(`/address/${inputAddress.val()}`, (data) => {
-                $("input[name='geocode']").val(data.geometry.coordinates.join(','));
-                const p = data.properties;
-                const address = `${p.name}, ${p.locality}, ${p.region_a}, ${p.postalcode}`;
+                $("input[name='geocode']").val(`${data.position.lat},${data.position.lng}`);
+                const address = `${data.address.label}`;
                 suggestedAddress.val(address);
                 inputAddress.val(address);
 
@@ -75,11 +100,19 @@ $(function () {
 
     function validateForm(options) {
         const form = $("#schedule");
-        form.validate(options);
+        validator = form.validate(options);
         return form.valid();
     }
 
     function requestEstimate() {
-
+        const loader = $("#loadingDiv");
+        loader.addClass("is-active");
+        $.post(`/`, $('form#schedule').serialize(), (data) => {
+            loader.removeClass("is-active");
+            $('#schedule-box').html(data);
+        }).fail((data) => {
+            loader.removeClass("is-active");
+            validator.showErrors(JSON.parse(data.responseText));
+        });
     }
 });
