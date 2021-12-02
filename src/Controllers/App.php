@@ -45,7 +45,7 @@ class App extends Willow {
     }
     function validateCaptcha(Base $f3) {
         $valid = self::validCaptcha($f3, $f3->get('GET.captcha'));
-        header("Content-Type: ".Psr7::TEXT_PLAIN, true, 200);
+        header("Content-Type: text/plain", true, 200);
         echo $valid ? "true" : Willow::dict("schedule.captcha.mismatch");
     }
 
