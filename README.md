@@ -5,3 +5,9 @@ Welcome to NewStandard Painting
 ```bash
 ./run.sh
 ```
+
+### stage
+https://new-standard-painting.herokuapp.com/
+
+### prod
+https://newstandardpainting.com/
