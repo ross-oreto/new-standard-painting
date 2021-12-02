@@ -4,12 +4,12 @@
     "type": "project",
     "require": {
         "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
         "bcosca/fatfree-core": "3.7.3",
         "monolog/monolog": "^2.3",
         "oreto/f3-willow": "dev-master",
-      "ext-curl": "*",
-      "ext-intl": "*",
-      "ext-gd": "*",
         "egulias/email-validator": "^3.1"
     },
     "autoload": {
