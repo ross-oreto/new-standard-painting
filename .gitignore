@@ -3,6 +3,7 @@
 composer.phar
 
 /vendor/
+composer.lock
 
 webapp/tmp/
 webapp/assets/dist
