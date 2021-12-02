@@ -169,7 +169,7 @@ class App extends Willow {
         $smtp->set("To", "\"${form['name']}\" <${form['email']}>");
         $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
         $smtp->set('Subject', Willow::dict("schedule.success.email.subject", $form['address']).$mode);
-        return $ok; // && $smtp->send($this->createExternalEmail($form));
+        return $ok && $smtp->send($this->createExternalEmail($form));
     }
 
     protected function getSmtp(Base $f3, array|null $conf = null): SMTP {
