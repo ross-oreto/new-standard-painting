@@ -1,7 +1,7 @@
 <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
-            <img src="{{ @asset('nsp-ico-sm.png') }}">
+            <img src="{{ @asset('nsp-ico-sm.png') }}" alt="nashville painting">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
@@ -21,7 +21,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <a href="tel:{{ @contact.number }}" class="button">
-                    <img src="{{ @asset('phone-solid.svg') }}" height="25" width="25" class="pr-2" />
+                    <img src="{{ @asset('phone-solid.svg') }}" height="25" width="25" class="pr-2" alt="{{ @contact.number }}" />
                     {{ @contact.number }}
                 </a>
             </div>
