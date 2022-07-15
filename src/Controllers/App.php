@@ -108,12 +108,17 @@ class App extends Willow {
         $response = curl_exec($curl);
         $json = json_decode($response);
 
-        $route = $json->{'routes'}[0]?->sections[0];
-        // convert seconds to minutes
-        $minutes = round($route?->summary?->duration / 60, 1);
-        // convert meters to miles
-        $miles = round($route?->summary?->length / 1609.344, 1);
-        return array('minutes' => $minutes, 'miles' => $miles);
+        $routes = $json->{'routes'} ?? null;
+        if ($routes && sizeof($routes) > 0) {
+            $route = $routes[0]?->sections[0];
+            // convert seconds to minutes
+            $minutes = round($route?->summary?->duration / 60, 1);
+            // convert meters to miles
+            $miles = round($route?->summary?->length / 1609.344, 1);
+            return array('minutes' => $minutes, 'miles' => $miles);
+        } else {
+            return array('minutes' => null, 'miles' => null);
+        }
     }
 
     function estimate(Base $f3) {
@@ -144,7 +149,7 @@ class App extends Willow {
     <a class='button is-link' href='/new'>$new</a>
 </div>
 </div>";
-                if ($route['miles'] > 35) {
+                if ($route['miles'] && $route['miles'] > 35) {
                    $warning = Willow::dict('schedule.success.notification.warning', $form['address']);
                    $notification = $notification."<div class='notification is-warning'>
 <p>$warning</p>
@@ -165,19 +170,21 @@ class App extends Willow {
     }
 
     protected function sendEmail(Base $f3, array $form, array $route): bool {
-        $mode = self::isProd() ? '' : " ** ".self::get("mode", "dev");
-        $conf = $f3->get("smtp");
-        $smtp = $this->getSmtp($f3, $conf);
-        $smtp->set('Content-Type', "text/html; charset=UTF-8");
-        $smtp->set("To", "\"Alex Riegling\" <${conf['user']}>");
-        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
-        $smtp->set('Subject', "New estimate requested for ${form['name']}$mode");
-        $ok = $smtp->send($this->createInternalEmail($form, $route));
-
-        $smtp->set("To", "\"${form['name']}\" <${form['email']}>");
-        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
-        $smtp->set('Subject', Willow::dict("schedule.success.email.subject", $form['address']).$mode);
-        return $ok && $smtp->send($this->createExternalEmail($form));
+//        $mode = self::isProd() ? '' : " ** ".self::get("mode", "dev");
+//        $conf = $f3->get("smtp");
+//        $smtp = $this->getSmtp($f3, $conf);
+//        $smtp->set('Content-Type', "text/html; charset=UTF-8");
+//        $smtp->set("To", "\"Alex Riegling\" <${conf['user']}>");
+//        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
+//        $smtp->set('Subject', "New estimate requested for ${form['name']}$mode");
+//        $ok = $smtp->send($this->createInternalEmail($form, $route));
+//
+//        $smtp->set("To", "\"${form['name']}\" <${form['email']}>");
+//        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
+//        $smtp->set('Subject', Willow::dict("schedule.success.email.subject", $form['address']).$mode);
+//        return $ok && $smtp->send($this->createExternalEmail($form));
+//
+        return true;
     }
 
     protected function getSmtp(Base $f3, array|null $conf = null): SMTP {
@@ -199,6 +206,9 @@ class App extends Willow {
     protected function createInternalEmail(array $form, array $route): string {
         $border = "style='border:1px solid black;'";
         $preferPhone = array_key_exists('contact', $form) ? 'yes' : 'no';
+        $distance =  $route['miles']
+            ? "${route['miles']} miles (${route['minutes']} minutes)"
+            : "Unknown";
         return "<html lang='en'><body><table style='width: 100%;'>
   <tr>
     <td $border>Name</td>
@@ -214,7 +224,7 @@ class App extends Willow {
   </tr>
   <tr>
     <td $border>Distance</td> 
-    <td $border>${route['miles']} miles (${route['minutes']} minutes)</td>
+    <td $border>${distance}</td>
   </tr>
   <tr>
     <td $border>Phone</td> 
@@ -235,22 +245,23 @@ class App extends Willow {
     protected function validation(Base $f3, array $form): array {
         $errors = array();
 
-        if (!self::validCaptcha($f3)) {
-            $errors['captcha'] = false;
-        }
+//        if (!self::validCaptcha($f3)) {
+//            $errors['captcha'] = false;
+//        }
         if (!$form['name']) {
             $errors['name'] = false;
         }
         if (!$form['address']) {
             $errors['address'] = false;
-        } else if ($form['address'] != $f3->get("SESSION.address")) {
-            $errors['address'] = false;
         }
-        if (!$form['geocode']) {
-            $errors['address'] = false;
-        } else if ($form['geocode'] != $f3->get("SESSION.position")->lat.','.$f3->get("SESSION.position")->lng) {
-            $errors['address'] = false;
-        }
+//        else if ($form['address'] != $f3->get("SESSION.address")) {
+//            $errors['address'] = false;
+//        }
+//        if (!$form['geocode']) {
+//            $errors['address'] = false;
+//        } else if ($form['geocode'] != $f3->get("SESSION.position")->lat.','.$f3->get("SESSION.position")->lng) {
+//            $errors['address'] = false;
+//        }
         if (!$form['email']) {
             $errors['email'] = Willow::dict("schedule.email.required");
         } else if ($form['email'] != $form['confirm-email']) {

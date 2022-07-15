@@ -39,88 +39,94 @@ $(function () {
         }, 500);
     });
 
-    let validator = null;
+    const inputAddress = $("input[name='address']");
+    const suggestedAddress = $("input[name='suggestedAddress']");
 
-    $("#estimate-button").click(() => {
-        const rules = {
-            'name': {
-                required: true
-            }
-            , 'address': {
-                required: true
-                , equalTo: "input[name='suggestedAddress']"
-            }
-            , 'email': {
-                required: true,
-                email: true
-            }
-            , 'confirm-email': {
-                required: true,
-                email: true,
-                equalTo: 'input[name=email]'
-            }
-            , 'phone': {
-                phoneUS: true,
-                required: {
-                    depends: () => $("input[name=contact]").is(":checked")
-                }
-            }
-            , 'captcha': {
-                required: true
-                , remote: {
-                    url: '/validate-captcha'
-                    , error: (data) => {
-                        const el = $('#captcha');
-                        el.attr('src', el.attr('src') + '?' + Math.random());
-                        $('input[name="captcha"]').val('');
-                        validator.showErrors({
-                            'captcha': data.responseText
-                        });
-                    }
-                }
-            }
-        };
-        const highlight = function(element, errorClass) {
-            const el = $(element);
-            el.addClass("is-danger");
-            setTimeout(() => {
-                el.siblings('label').addClass('has-text-danger');
-            }, 100);
-        }
-        const unhighlight = function(element, errorClass, validClass) {
-            $(element).removeClass("is-danger");
-        }
-        const options = {
-            onkeyup: false
-            , onfocusout: false
-            , rules: rules
-            , highlight: highlight
-            , unhighlight: unhighlight
-            , messages: {
-                'address': { equalTo: '' }
-                , 'captcha': { remote: '' }
-            }
-            , lang: 'en'
-        };
+    const highlight = function(element, errorClass) {
+        const el = $(element);
+        el.addClass("is-danger");
+        setTimeout(() => {
+            el.siblings('label').addClass('has-text-danger');
+        }, 100);
+    }
+    const unhighlight = function(element, errorClass, validClass) {
+        $(element).removeClass("is-danger");
+    }
 
-        const inputAddress = $("input[name='address']");
-        const suggestedAddress = $("input[name='suggestedAddress']");
-        if (validateForm(options)) {
-            requestEstimate();
-        } else if(inputAddress.val()) {
+    const rules = {
+        'name': {
+            required: true
+        }
+        , 'address': {
+            required: true
+            , equalTo: "input[name='suggestedAddress']"
+        }
+        , 'email': {
+            required: true,
+            email: true
+        }
+        , 'confirm-email': {
+            required: true,
+            email: true,
+            equalTo: 'input[name=email]'
+        }
+        , 'phone': {
+            phoneUS: true,
+            required: {
+                depends: () => $("input[name=contact]").is(":checked")
+            }
+        }
+        // , 'captcha': {
+        //     required: true
+        //     , remote: {
+        //         url: '/validate-captcha'
+        //         , error: (data) => {
+        //             const el = $('#captcha');
+        //             el.attr('src', el.attr('src') + '?' + Math.random());
+        //             $('input[name="captcha"]').val('');
+        //             validator.showErrors({
+        //                 'captcha': data.responseText
+        //             });
+        //         }
+        //     }
+        // }
+    };
+
+    const options = {
+        onkeyup: false
+        , onfocusout: false
+        , rules: rules
+        , highlight: highlight
+        , unhighlight: unhighlight
+        , messages: {
+            'address': { equalTo: '' }
+            // , 'captcha': { remote: '' }
+        }
+        , lang: 'en'
+    };
+
+    inputAddress.blur(function (event) {
+        if (inputAddress.val()) {
             $.get(`/address/${inputAddress.val()}`, (data) => {
                 $("input[name='geocode']").val(`${data.position.lat},${data.position.lng}`);
                 const address = `${data.address.label}`;
                 suggestedAddress.val(address);
                 inputAddress.val(address);
 
-                if(validateForm(options)) {
+                if (validateForm(options)) {
                     requestEstimate();
                 }
             }).fail((data) => {
-                suggestedAddress.val('');
-                validator.showErrors({ 'address': data.responseText });
+                suggestedAddress.val(inputAddress.val());
             });
+        }
+    });
+
+    let validator = null;
+
+    $("#estimate-button").click(() => {
+        if (validateForm(options)) {
+            requestEstimate();
         }
     });
 
