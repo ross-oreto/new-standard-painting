@@ -170,21 +170,19 @@ class App extends Willow {
     }
 
     protected function sendEmail(Base $f3, array $form, array $route): bool {
-//        $mode = self::isProd() ? '' : " ** ".self::get("mode", "dev");
-//        $conf = $f3->get("smtp");
-//        $smtp = $this->getSmtp($f3, $conf);
-//        $smtp->set('Content-Type', "text/html; charset=UTF-8");
-//        $smtp->set("To", "\"Alex Riegling\" <${conf['user']}>");
-//        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
-//        $smtp->set('Subject', "New estimate requested for ${form['name']}$mode");
-//        $ok = $smtp->send($this->createInternalEmail($form, $route));
-//
-//        $smtp->set("To", "\"${form['name']}\" <${form['email']}>");
-//        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
-//        $smtp->set('Subject', Willow::dict("schedule.success.email.subject", $form['address']).$mode);
-//        return $ok && $smtp->send($this->createExternalEmail($form));
-//
-        return true;
+        $mode = self::isProd() ? '' : " ** ".self::get("mode", "dev");
+        $conf = $f3->get("smtp");
+        $smtp = $this->getSmtp($f3, $conf);
+        $smtp->set('Content-Type', "text/html; charset=UTF-8");
+        $smtp->set("To", "\"Alex Riegling\" <${conf['user']}>");
+        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
+        $smtp->set('Subject', "New estimate requested for ${form['name']}$mode");
+        $ok = $smtp->send($this->createInternalEmail($form, $route));
+
+        $smtp->set("To", "\"${form['name']}\" <${form['email']}>");
+        $smtp->set("From", "\"newstandardpainting.com\" <${conf['user']}>");
+        $smtp->set('Subject', Willow::dict("schedule.success.email.subject", $form['address']).$mode);
+        return $ok && $smtp->send($this->createExternalEmail($form));
     }
 
     protected function getSmtp(Base $f3, array|null $conf = null): SMTP {
